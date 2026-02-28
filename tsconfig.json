@@ -15,6 +15,7 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "preserve",
+    "esModuleInterop": true,
     "paths": {
       "@shared/*": ["src/app/shared/*"],
       "@features/*": ["src/app/features/*"],
