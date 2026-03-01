@@ -1,0 +1,94 @@
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.actions-group {
+    display: grid;
+    margin-top: 30px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+}
+
+.btn {
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: solid 1px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px 20px;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.left-action {
+    text-align: right;
+}
+
+.right-action {
+    text-align: left;
+}
+
+.reset-btn {
+    color: #556287;
+    background-color: #eaecf2;
+}
+
+.register-btn {
+    color: black;
+    background-color: #f5df66;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.ng-invalid:not(form).ng-touched,
+.ng-invalid:not(form).ng-dirty {
+    border: 1px solid #a94442;
+}
+
+input[type='submit']:disabled,
+button:disabled {
+    color: #999;
+    background-color: #f2f2f2;
+    cursor: not-allowed;
+}
+
+@media (width <= 750px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .actions-group {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

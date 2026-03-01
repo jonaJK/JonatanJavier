@@ -1,0 +1,167 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+        <div class="form-group">
+            <label for="productId">ID</label>
+            <input
+                id="productId"
+                type="text"
+                placeholder="Ingrese un ID"
+                formControlName="productId"
+                required
+            />
+
+            @if (productId?.invalid && (productId?.dirty || productId?.touched)) {
+                <div class="alert alert-danger">
+                    @if (productId?.hasError('required')) {
+                        <div class="error-message">Este campo es requerido</div>
+                    }
+
+                    @if (productId?.hasError('minlength')) {
+                        <div class="error-message">El ID debe contener mínimo 3 caracteres</div>
+                    }
+
+                    @if (productId?.hasError('maxlength')) {
+                        <div class="error-message">El ID debe contener máximo 10 caracteres</div>
+                    }
+
+                    @if (productId?.hasError('productIdExists')) {
+                        <div class="error-message">ID no válido</div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input
+                id="name"
+                type="text"
+                placeholder="Ingrese el nombre del producto"
+                formControlName="name"
+            />
+
+            @if (name?.invalid && (name?.dirty || name?.touched)) {
+                <div class="alert alert-danger">
+                    @if (name?.hasError('required')) {
+                        <div class="error-message">Este campo es requerido</div>
+                    }
+
+                    @if (name?.hasError('minlength')) {
+                        <div class="error-message">El nombre debe contener mínimo 5 caracteres</div>
+                    }
+
+                    @if (name?.hasError('maxlength')) {
+                        <div class="error-message">
+                            El nombre debe contener máximo 100 caracteres
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <input
+                id="description"
+                type="text"
+                placeholder="Ingrese una descripción"
+                formControlName="description"
+            />
+
+            @if (description?.invalid && (description?.dirty || description?.touched)) {
+                <div class="alert alert-danger">
+                    @if (description?.hasError('required')) {
+                        <div class="error-message">Este campo es requerido</div>
+                    }
+
+                    @if (description?.hasError('minlength')) {
+                        <div class="error-message">
+                            El nombre debe contener mínimo 10 caracteres
+                        </div>
+                    }
+
+                    @if (description?.hasError('maxlength')) {
+                        <div class="error-message">
+                            El nombre debe contener máximo 200 caracteres
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="logo">Logo</label>
+            <input
+                id="logo"
+                type="text"
+                placeholder="Ingrese el logo (url)"
+                formControlName="logo"
+            />
+
+            @if (logo?.invalid && (logo?.dirty || logo?.touched)) {
+                <div class="alert alert-danger">
+                    @if (logo?.hasError('required')) {
+                        <div class="error-message">Este campo es requerido</div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="releaseDate">Fecha Liberación</label>
+            <input
+                id="releaseDate"
+                type="date"
+                formControlName="releaseDate"
+                class="date-release-input"
+                [min]="minDate"
+                (keydown)="$event.preventDefault()"
+                (mousedown)="
+                    $any($event.target).showPicker ? $any($event.target).showPicker() : null
+                "
+            />
+
+            @if (releaseDate?.invalid && (releaseDate?.dirty || releaseDate?.touched)) {
+                <div class="alert alert-danger">
+                    @if (releaseDate?.hasError('invalidDate')) {
+                        <div class="error-message">La fecha de liberación no es valida</div>
+                    }
+
+                    @if (releaseDate?.hasError('invalidReleaseDate')) {
+                        <div class="error-message">
+                            La fecha de liberación debe ser mayor o igual a la fecha actual
+                        </div>
+                    }
+
+                    @if (releaseDate?.hasError('required')) {
+                        <div class="error-message">Este campo es requerido</div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="reviewDate">Fecha Revisión</label>
+            <input id="reviewDate" type="date" value="22/02/2024" formControlName="reviewDate" />
+
+            @if (reviewDate?.invalid && (reviewDate?.dirty || reviewDate?.touched)) {
+                <div class="alert alert-danger">
+                    @if (reviewDate?.hasError('required')) {
+                        <div class="error-message">Este campo es requerido</div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="actions-group">
+        <div class="left-action">
+            <button type="button" class="btn reset-btn" (click)="resetForm()">Reiniciar</button>
+        </div>
+        <div class="right-action">
+            <button type="submit" class="btn register-btn" [disabled]="!productForm.valid">
+                Enviar
+            </button>
+        </div>
+    </div>
+</form>
