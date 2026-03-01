@@ -1,4 +1,4 @@
-import { Component, input, output, signal, computed } from '@angular/core';
+import { Component, input, output, signal, computed, model } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -14,7 +14,8 @@ export class Paginator {
     totalItems = input.required<number>();
     pageChange = output<PaginatorState>();
 
-    currentPage = signal(1);
+    currentPage = model(1);
+
     currentPageSize = signal(5);
     pageSizeOptions = [5, 10, 20];
 
