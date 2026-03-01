@@ -1,0 +1,15 @@
+@if (confirmModalService.isOpen()) {
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-body">
+                ¿Estás seguro de eliminar el producto {{ confirmModalService.productName() }}?
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-cancel" (click)="confirmModalService.cancel()">Cancelar</button>
+                <button class="btn-confirm" (click)="confirmModalService.confirm()">
+                    Confirmar
+                </button>
+            </div>
+        </div>
+    </div>
+}
