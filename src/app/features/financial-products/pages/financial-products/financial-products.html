@@ -1,0 +1,24 @@
+<div class="container">
+    <div>
+        <div class="table-header">
+            <app-search
+                [(searchText)]="searchText"
+                (searchTextChange)="onSearchTextChange($event)"
+            />
+            <button class="button" (click)="navigateToRegister()">Agregar</button>
+        </div>
+    </div>
+    <div class="table-container">
+        <app-financial-products-table
+            [products]="paginatedProducts()"
+            [isLoading]="isLoading()"
+            (deleteEmitter)="handleDelete($event)"
+            (editEmitter)="handleEdit($event)"
+        />
+        <app-paginator
+            [totalItems]="totalProducts()"
+            [(currentPage)]="currentPagination().page"
+            (pageChange)="onPageChange($event)"
+        />
+    </div>
+</div>
