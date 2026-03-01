@@ -1,0 +1,8 @@
+@let alert = alertConfig();
+
+<div [class]="'alert-container ' + alert.type">
+    <div class="alert-content">
+        <strong class="alert-title">{{ alert.title }}</strong>
+        <span class="alert-description">{{ alert.description }}</span>
+    </div>
+</div>
