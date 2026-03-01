@@ -1,0 +1,10 @@
+<div class="popup-container">
+    <button class="dots-btn" (click)="toggleMenu($event)">⋮</button>
+
+    @if (isOpen()) {
+        <ul class="menu-list">
+            <li (click)="onEdit()">Modificar</li>
+            <li (click)="onDelete()">Eliminar</li>
+        </ul>
+    }
+</div>
