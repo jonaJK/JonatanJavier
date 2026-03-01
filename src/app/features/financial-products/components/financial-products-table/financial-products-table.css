@@ -1,3 +1,7 @@
+div.table-container {
+  overflow-x: scroll;
+}
+
 .products-table {
     width: 100%;
     border-collapse: collapse;
