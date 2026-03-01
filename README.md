@@ -1,59 +1,78 @@
-# JonatanJavier
+# Jonatan Javier - Test Angular - DEVSU
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+---
 
-## Development server
+## 🚀 Tecnologías y Versiones
 
-To start a local development server, run:
+- **Framework:** Angular v21.2.0.
+- **Lenguaje:** TypeScript v5.9.2.
+- **Runtime/Package Manager:** npm v11.11.0.
+- **Motor de Pruebas:** Jest v30.2.0.
 
+---
+
+## 🛠️ Configuración del Sistema
+
+### Ejecución del proyecto
+
+1 - Clonar el proyecto y moverse a la rama  `develop`
+
+2 - Descarga todos los modulos necesarios con el comando:
+```bash
+npm install
+```
+3 - Para ejecutar la aplicación 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4 - Para acceder a la aplicación `http://localhost:4200/ `
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+5 - Para ejecutar los test  
 ```bash
-ng generate component component-name
+npm run test:coverage
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Proxy de Desarrollo
 
-```bash
-ng generate --help
-```
+El proyecto redirige las peticiones a la API local para evitar problemas de CORS:
 
-## Building
+- **Ruta:** `/bp`
+- **Destino:** `http://localhost:3002`
+- **Seguridad:** Desactivada (`secure: false`) para facilitar pruebas locales.
+  
 
-To build the project run:
+### Alias de Rutas (Path Mapping)
 
-```bash
-ng build
-```
+| Alias         | Carpeta Destino      |
+| :------------ | :------------------- |
+| `@core/*`     | `src/app/core/*`     |
+| `@shared/*`   | `src/app/shared/*`   |
+| `@features/*` | `src/app/features/*` |
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 📦 Scripts de NPM
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Ejecuta estos comandos desde la raíz del proyecto:
 
-```bash
-ng test
-```
+| Comando                 | Acción                                         |
+| :---------------------- | :--------------------------------------------- |
+| `npm install`           | Instala las dependencias.                      |
+| `npm start`             | Inicia el servidor de desarrollo (`ng serve`). |
+| `npm run build`         | Compila la aplicación para producción.         |
+| `npm run watch`         | Compila y observa cambios en modo desarrollo.  |
+| `npm test`              | Ejecuta las pruebas unitarias con **Jest**.    |
+| `npm run test:watch`    | Ejecuta tests en modo interactivo.             |
+| `npm run test:coverage` | Genera reporte de cobertura de código.         |
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 🧪 Pruebas Unitarias
 
-```bash
-ng e2e
-```
+El entorno de pruebas está configurado con `jest-preset-angular`.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- **Configuración principal:** `jest.config.ts`.
+- **Setup:** Se inicializa mediante `src/setup-jest.ts`.
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
