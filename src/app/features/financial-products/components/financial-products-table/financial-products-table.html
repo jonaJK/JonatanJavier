@@ -1,0 +1,47 @@
+<div class="table-container">
+    <table class="products-table">
+        <thead>
+            <tr>
+                <th class="logo-container">Logo</th>
+                <th>Nombre del producto</th>
+                <th class="desc-container">Descripción</th>
+                <th>Fecha de liberación</th>
+                <th>Fecha de reestructuración</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (isLoading()) {
+                @for (item of [1, 2, 3, 4]; track $index) {
+                    <tr>
+                        <th class="logo-container"><app-skeleton-bar /></th>
+                        <td><app-skeleton-bar /></td>
+                        <td><app-skeleton-bar /></td>
+                        <td><app-skeleton-bar /></td>
+                        <td><app-skeleton-bar /></td>
+                        <td><app-skeleton-bar /></td>
+                    </tr>
+                }
+            } @else {
+                @for (product of products(); track product.id) {
+                    <tr>
+                        <th class="logo-container">
+                            <div class="logo">SF</div>
+                        </th>
+                        <td>{{ product.name }}</td>
+                        <td class="desc-container">{{ product.description }}</td>
+                        <td>{{ product.date_release | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{ product.date_revision | date: 'dd/MM/yyyy' }}</td>
+                        <td>
+                            <app-popupmenu (edit)="onEdit(product.id)" (delete)="onDelete(product)">></app-popupmenu>
+                        </td>
+                    </tr>
+                } @empty {
+                    <tr>
+                        <th colspan="6" class="empty-container">No se han encontrados datos</th>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
