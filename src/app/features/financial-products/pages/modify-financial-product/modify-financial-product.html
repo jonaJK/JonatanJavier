@@ -1,0 +1,20 @@
+@let alert = alertConfig();
+@let loading = isLoading();
+
+@if (alert && !loading) {
+    <div class="alert-container">
+        <app-alert [alertConfig]="alert"></app-alert>
+    </div>
+}
+
+<div class="container">
+    <div class="title-container">
+        <h1>Formulario de Edición</h1>
+    </div>
+    <div class="form-container">
+        <app-financial-product-form
+            [isEditMode]="true"
+            (formEmitter)="modifyProduct($event)"
+        ></app-financial-product-form>
+    </div>
+</div>
