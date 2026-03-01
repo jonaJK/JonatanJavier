@@ -1,0 +1,41 @@
+<div class="pagination-container">
+    <div class="total-elements">{{ totalItems() }} Resultados</div>
+    <div class="pages-container">
+        @if (totalItems() > 0) {
+            <nav class="pages-buttons">
+                <button (click)="goToPage(currentPage() - 1)" [disabled]="currentPage() === 1">
+                    &laquo;
+                </button>
+
+                @for (page of pagesList(); track page) {
+                    <button
+                        (click)="goToPage(page)"
+                        [class.active]="page === currentPage()"
+                        class="num-btn"
+                    >
+                        {{ page }}
+                    </button>
+                }
+
+                <button
+                    (click)="goToPage(currentPage() + 1)"
+                    [disabled]="currentPage() === totalPages()"
+                >
+                    &raquo;
+                </button>
+            </nav>
+        }
+    </div>
+
+    <div class="pages-options-container">
+        <select
+            [(ngModel)]="currentPageSize"
+            (change)="onPageSizeChange()"
+            class="page-size-select"
+        >
+            @for (option of pageSizeOptions; track option) {
+                <option [value]="option">{{ option }}</option>
+            }
+        </select>
+    </div>
+</div>
